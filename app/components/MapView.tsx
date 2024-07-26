@@ -21,7 +21,7 @@ export const MapView = ({ className }: { className?: string }) => {
       >
         <Marker width={50} anchor={[45.49376, -0.762163]} />
       </Map>
-      <div className="bg-gradient-to-t from-black to-50% absolute bottom-0 left-0 right-0 h-8 z-50"></div>
+      <div className="bg-gradient-to-t from-black to-50% absolute bottom-0 left-0 right-0 h-8 z-50" />
     </div>
   );
 };

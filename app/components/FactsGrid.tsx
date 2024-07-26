@@ -15,15 +15,15 @@ export default function FactsGrid({
     <div className="flex flex-col md:flex-row gap-x-8 justify-start gap-y-2 md:items-end mt-8">
       <div className="flex gap-x-4">
         <LeafIcon className="w-8 h-8" />
-        <p className="mt-auto">Rural Setting</p>
+        <h6 className="self-center">Rural Setting</h6>
       </div>
       <div className="flex gap-x-4">
         <BedIcon className="w-8 h-8" />
-        <p className="mt-auto">Sleeps 8</p>
+        <h6 className="self-center">Sleeps 8</h6>
       </div>
       <div className="flex gap-x-4">
-        <PoolIcon className="w-6 h-6" />
-        <p className="mt-auto">10m x 5m Heated Pool</p>
+        <PoolIcon className="w-8 h-8" />
+        <h6 className="self-center">10m x 5m Heated Pool</h6>
       </div>
     </div>
   );

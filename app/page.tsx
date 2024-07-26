@@ -130,8 +130,8 @@ export default async function Home() {
         </p>
         <MapView className="max-w-screen-sm rounded-lg w-full md:basis-1/2 flex-grow" />
       </div>
-      <div className="mx-8 md:mx-16 rounded-lg">
-        <StreetView />
+      <div className="mx-8 flex justify-center">
+        <StreetView className="w-2/3" />
       </div>
       <div className="px-8 md:px-16">
         <BlocksCollection
