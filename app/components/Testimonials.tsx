@@ -10,7 +10,7 @@ export type ReviewCollectionType = {
   data?: {
     name: string;
     reviewText: string;
-    reviewImage: string;
+    reviewImage?: string;
     reviewTitle: string;
     _id: string;
     title: string;
@@ -44,7 +44,7 @@ export const Testimonials = ({
         </div>
       )}
 
-      <h5 className="mx-8 z-10">TESTIMONIALS</h5>
+      <h5 className="mx-8 z-10">GUEST REVIEWS</h5>
       <div className="grid lg:grid-cols-3 justify-center mx-4">
         {reviewData.map((item, i) => {
           if (!item) {
@@ -60,13 +60,24 @@ export const Testimonials = ({
               </div>
               <div className="flex items-center gap-x-4 relative">
                 <div className="md:relative h-12 w-12 absolute max-md:-right-6 max-md:-bottom-6 max-md:rotate-12">
-                  <Image
-                    {...convertToNextImageProps(
-                      getImageProps(item.reviewImage)
-                    )}
-                    style={{ objectFit: 'cover' }}
-                    className="rounded-full h-full"
-                  />
+                  {item.reviewImage ? (
+                    <Image
+                      {...convertToNextImageProps(
+                        getImageProps(item.reviewImage)
+                      )}
+                      style={{ objectFit: 'cover' }}
+                      className="rounded-full h-full"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/villa_shutters.jpg"
+                      style={{ objectFit: 'cover', aspectRatio: 1 / 1 }}
+                      width={300}
+                      height={200}
+                      className="rounded-full"
+                      alt="Villa Beavoir guest"
+                    />
+                  )}
                 </div>
                 <p className="p2">{item.name}</p>
               </div>
