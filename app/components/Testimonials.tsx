@@ -55,9 +55,7 @@ export const Testimonials = ({
               key={i}
               className="z-10 md:basis-1/3 md:h-64 flex flex-col gap-y-4 justify-end bg-black text-white p-4 m-4 border border-white rounded-lg"
             >
-              <div className="flex-grow flex items-center">
-                <p>{`“${item.reviewText}”`}</p>
-              </div>
+              <p className="flex-grow self-center my-auto">{item.reviewText}</p>
               <div className="flex items-center gap-x-4 relative">
                 <div className="md:relative h-12 w-12 absolute max-md:-right-6 max-md:-bottom-6 max-md:rotate-12">
                   {item.reviewImage ? (
