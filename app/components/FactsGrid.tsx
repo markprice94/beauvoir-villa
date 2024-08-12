@@ -12,7 +12,7 @@ export default function FactsGrid({
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-x-8 justify-start gap-y-2 md:items-end mt-8">
+    <div className="flex flex-col md:flex-row gap-x-8 justify-start gap-y-2 md:items-end mt-8 flex-wrap">
       <div className="flex gap-x-4">
         <LeafIcon className="w-8 h-8" />
         <h6 className="self-center">Rural Setting</h6>

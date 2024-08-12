@@ -5,6 +5,9 @@ import { Logo } from '@app/components/Logo/Logo';
 import useScrollPosition from '@app/utils/scroll-position';
 import classNames from 'classnames';
 import Link from 'next/link';
+import { FacebookIcon } from '../Icons/Facebook';
+import { InstagramIcon } from '../Icons/Instagram';
+import SocialButtons from '../SocialButtons';
 
 const Header = () => {
   const scrollPosition = useScrollPosition();
@@ -22,7 +25,10 @@ const Header = () => {
       <Link href="/">
         <Logo className="md:w-24 w-0" />
       </Link>
-      <NavBar />
+      <div className="flex gap-x-4 items-center">
+        <SocialButtons />
+        <NavBar />
+      </div>
     </header>
   );
 };

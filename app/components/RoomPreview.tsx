@@ -39,6 +39,7 @@ const responsive = {
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
+    partialVisibilityGutter: 30,
   },
 };
 
@@ -54,12 +55,13 @@ export const RoomPreview = ({ rooms }: { rooms: RoomCollectionType }) => {
     <div className="px-8 md:px-16">
       <h2 className="md:mx-8">Take a look inside</h2>
 
-      <div className="relative">
+      <div className="relative mb-8 md:mb-12">
         <div className="absolute w-8 bg-gradient-to-r from-black -left-[2px] h-full z-40"></div>
         <div className="absolute w-8 bg-gradient-to-l from-black -right-[2px] h-full z-40"></div>
         <Carousel
           responsive={responsive}
           itemClass="mx-2 md:mx-4 my-12 md:mx-12"
+          showDots
         >
           {roomData.map((room, index) => {
             if (!room) return null;
