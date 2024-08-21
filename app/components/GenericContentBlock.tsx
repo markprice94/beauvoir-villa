@@ -112,7 +112,10 @@ export const GenericContentBlock = ({
       </div>
 
       {copy && (
-        <div className="mt-8" dangerouslySetInnerHTML={{ __html: copy }} />
+        <div
+          className="mt-8 content-block-rtf"
+          dangerouslySetInnerHTML={{ __html: copy }}
+        />
       )}
       {link && (
         <Link className="mr-auto btn-main py-1 px-4 border" href={link}>

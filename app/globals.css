@@ -171,13 +171,7 @@ p {
   }
 
   .input {
-    @apply block w-full mb-4 bg-transparent focus:ring-blue-site rounded-md
-    /* @apply block;
-    @apply w-full;
-    @apply border-b;
-    @apply border-blue-site;
-    @apply focus:outline-none;
-    @apply mb-4; */;
+    @apply block w-full mb-4 bg-transparent focus:ring-blue-site rounded-md;
   }
 }
 
@@ -198,4 +192,16 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.content-block-rtf > ul > li {
+  margin-bottom: 8px;
+  display: 'list-item';
+  list-style-type: disc;
+  margin-left: 20px;
+  list-style-position: outside;
+}
+
+.content-block-rtf > ul {
+  margin: 16px 0;
 }
