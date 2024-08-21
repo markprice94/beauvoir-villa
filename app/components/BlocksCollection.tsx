@@ -12,7 +12,7 @@ export const BlocksCollection = ({
   bookings?: any;
 }) => {
   return (
-    <div className="flex flex-col md:flex-row md:gap-x-8">
+    <div className="flex flex-col lg:flex-row lg:gap-x-8">
       <div>
         {blocks.map((block: any, index: number) => {
           if (block.dataItem) {
@@ -28,7 +28,7 @@ export const BlocksCollection = ({
       {bookings && (
         <CalendarView
           items={bookings}
-          className="md:w-1/4 h-min relative md:sticky md:top-40 md:mt-20 z-40 md:float-right"
+          className="lg:w-1/4 h-min relative lg:sticky lg:top-40 lg:mt-20 z-40 lg:float-right"
         />
       )}
     </div>

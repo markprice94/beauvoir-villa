@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
-import type { LinkProps } from 'next/link';
-import { redirect, usePathname, useRouter } from 'next/navigation';
+import { useCallback, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { Logo } from '@app/components/Logo/Logo';
 import { Hamburger } from './Hamburger';
 import classNames from 'classnames';
-import Link from 'next/link';
 
 const navbarItems = [
   { slug: '/', label: 'Home' },

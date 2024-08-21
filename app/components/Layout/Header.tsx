@@ -26,7 +26,7 @@ const Header = () => {
         <Logo className="md:w-24 w-0" />
       </Link>
       <div className="flex gap-x-4 items-center">
-        <SocialButtons />
+        <SocialButtons className="hidden md:flex" />
         <NavBar />
       </div>
     </header>

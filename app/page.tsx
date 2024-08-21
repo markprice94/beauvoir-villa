@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation';
 import { getWixClient } from './utils/wix-data';
 import { BlocksCollection } from './components/BlocksCollection';
 import { MapView } from './components/MapView';
-import { StreetView } from './components/StreetView';
+import Directions from './components/Directions';
 
 export default async function Home() {
   let imageCounter = -1;
@@ -130,9 +130,7 @@ export default async function Home() {
         </p>
         <MapView className="max-w-screen-sm rounded-lg w-full md:basis-1/2 flex-grow" />
       </div>
-      <div className="md:mx-8 flex justify-center">
-        <StreetView className="w-2/3" />
-      </div>
+      <Directions />
       <div className="px-8 md:px-16">
         <BlocksCollection
           blocks={homePageBottomBlocks as (ContentBlockDataType | null)[]}
