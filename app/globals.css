@@ -214,3 +214,7 @@ a {
 .directions-box ol {
   margin: 0 0 12px 0;
 }
+
+.react-multiple-carousel__arrow {
+  z-index: 40 !important;
+}
