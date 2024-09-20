@@ -32,7 +32,9 @@ export function NavBar() {
       <nav
         onMouseLeave={() => setIsMenuShown(false)}
         className={classNames(
-          isMenuShown ? 'opacity-100' : 'opacity-0',
+          isMenuShown
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none',
           'max-md:h-screen z-60 right-0 top-0 md:top-4 md:right-8 absolute',
           'pr-8 pl-6 pb-8 pt-10',
           'bg-black md:rounded-md transition-opacity duration-500'

@@ -110,12 +110,19 @@ h6 {
 
 p {
   font-family: var(--font-roboto);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 24px;
 }
 
 @media only screen and (min-width: 768px) {
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
   p {
     font-size: 18px;
     line-height: 24px;

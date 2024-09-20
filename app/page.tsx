@@ -108,17 +108,19 @@ export default async function Home() {
     <div className="relative">
       <MainContent pageData={homePageData} pageFacts={homePageFacts}>
         <BlocksCollection
-          blocks={homePageBlocks as (ContentBlockDataType | null)[]}
+          blocks={homePageBlocks as unknown as (ContentBlockDataType | null)[]}
           bookings={bookings}
         />
       </MainContent>
       <RoomPreview rooms={rooms as RoomCollectionType} />
+
       {reviews && (
         <Testimonials
           reviews={reviews as ReviewCollectionType}
           background={backgroundImageRotation()}
         />
       )}
+
       <div className="rounded-lg py-24 px-8 md:px-16 justify-center flex flex-col md:flex-row gap-x-12 gap-y-4 items-center">
         <p className="md:basis-1/3">
           {`The Charente-Maritime is Poitou-Charentes' coastal department. Here,
@@ -133,7 +135,9 @@ export default async function Home() {
       <Directions />
       <div className="px-8 md:px-16">
         <BlocksCollection
-          blocks={homePageBottomBlocks as (ContentBlockDataType | null)[]}
+          blocks={
+            homePageBottomBlocks as unknown as (ContentBlockDataType | null)[]
+          }
         />
       </div>
     </div>

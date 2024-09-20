@@ -38,7 +38,7 @@ export const Testimonials = ({
           <Image
             {...convertToNextImageProps(getImageProps(background.src))}
             style={{ objectFit: 'cover' }}
-            className="w-full opacity-50 md:row-span-3 md:row-start-1 col-span-full md:h-screen h-0"
+            className="w-full opacity-50 md:row-span-3 md:row-start-1 col-span-full md:h-full h-0"
             sizes="100vw"
           />
           <div className="row-start-2 col-span-full md:mx-16 my-24 md:my-0">
