@@ -20,6 +20,8 @@ export const BlocksCollection = ({
               <GenericContentBlock
                 key={index}
                 block={block.dataItem?.data as ContentBlockDataType}
+                first={index === 0}
+                last={index === blocks.length - 1}
               />
             );
           }

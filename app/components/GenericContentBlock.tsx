@@ -8,6 +8,7 @@ import {
 } from '@app/utils/wix-media-image';
 import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
+import classNames from 'classnames';
 
 export type ContentBlockDataType = {
   preHeader?: string;
@@ -18,6 +19,8 @@ export type ContentBlockDataType = {
   pageAnchorId?: string;
   link?: string;
   linkText?: string;
+  blockType?: string;
+  showTitle?: boolean;
 };
 
 const responsive = {
@@ -37,8 +40,12 @@ const responsive = {
 
 export const GenericContentBlock = ({
   block,
+  last,
+  first,
 }: {
   block?: ContentBlockDataType | null;
+  last?: boolean;
+  first?: boolean;
 }) => {
   if (!block) {
     return null;
@@ -52,6 +59,8 @@ export const GenericContentBlock = ({
     pageAnchorId,
     link,
     linkText,
+    blockType,
+    showTitle,
   } = block;
 
   const secondaryImages = otherImages?.map((img) => img.src);
@@ -59,12 +68,22 @@ export const GenericContentBlock = ({
   return (
     <div
       id={pageAnchorId ?? title.toLowerCase().replace(' ', '-')}
-      className="py-12 md:py-20 flex flex-col gap-y-8"
+      className={classNames(
+        blockType === 'sideBySide' ? 'flex-row items-center' : 'flex-col',
+        first && 'pt-12 md:pt-20',
+        last && 'pb-12 md:pb-20',
+        'flex flex-wrap'
+      )}
     >
-      {preHeader && <h4>{preHeader.toUpperCase()}</h4>}
-      <h2>{title}</h2>
+      {preHeader && <h4 className="w-full">{preHeader.toUpperCase()}</h4>}
+      {showTitle && <h2 className="w-full">{title}</h2>}
 
-      <div className="max-w-[50vw] rounded-md md:rounded-lg">
+      <div
+        className={classNames(
+          blockType === 'sideBySide' && 'w-1/2',
+          'max-w-[50vw] rounded-md md:rounded-lg'
+        )}
+      >
         {image && !otherImages && (
           <Image
             {...convertToNextImageProps(getImageProps(image))}
@@ -113,12 +132,15 @@ export const GenericContentBlock = ({
 
       {copy && (
         <div
-          className="mt-8 content-block-rtf"
+          className={classNames(
+            blockType === 'sideBySide' ? 'ml-8 w-5/12' : 'mt-8',
+            'content-block-rtf'
+          )}
           dangerouslySetInnerHTML={{ __html: copy }}
         />
       )}
       {link && (
-        <Link className="mr-auto btn-main py-1 px-4 border" href={link}>
+        <Link className="mr-auto btn-main py-1 px-4 border mt-8" href={link}>
           {linkText ?? link}
         </Link>
       )}

@@ -24,18 +24,7 @@ export default async function Home() {
   const reviewsPromise = client.items
     .queryDataItems({ dataCollectionId: 'VillaReviews' })
     .find();
-  const roomsPageDataPromise = client.items
-    .queryDataItems({ dataCollectionId: 'pages' })
-    .eq('slug', 'rooms')
-    .find();
-  const availabilityPageDataPromise = client.items
-    .queryDataItems({ dataCollectionId: 'pages' })
-    .eq('slug', 'availability')
-    .find();
-  const contactPageDataPromise = client.items
-    .queryDataItems({ dataCollectionId: 'pages' })
-    .eq('slug', 'contact')
-    .find();
+
   const homePageDataPromise = client.items
     .queryDataItems({ dataCollectionId: 'pages' })
     .eq('slug', null)
@@ -59,21 +48,11 @@ export default async function Home() {
     referringItemId: 'd2a8fd59-1f0c-432c-82b0-8bb8af7a3972',
   });
 
-  const [
-    bookings,
-    rooms,
-    reviews,
-    roomsPageData,
-    availabilityPageData,
-    contactPageData,
-    homePageData,
-  ] = await Promise.all([
+  const [bookings, rooms, reviews, homePageData] = await Promise.all([
     bookingsPromise,
     roomsPromise,
     reviewsPromise,
-    roomsPageDataPromise,
-    availabilityPageDataPromise,
-    contactPageDataPromise,
+
     homePageDataPromise,
   ]).then((promiseResults) =>
     promiseResults.map((promiseResult) => promiseResult.items)
