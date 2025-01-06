@@ -68,42 +68,44 @@ export const GenericContentBlock = ({
   return (
     <div className="flex flex-col gap-y-4">
       <h2>{title}</h2>
-      <div
-        className={classNames(
-          sideBySide
-            ? 'grid-cols-1 lg:grid-cols-[1fr_2fr] items-center'
-            : 'grid-cols-1',
-          'grid gap-x-4 gap-y-4'
-        )}
-      >
-        {otherImages ? (
-          <Carousel responsive={responsive} autoPlay>
+      {image && (
+        <div
+          className={classNames(
+            sideBySide
+              ? 'grid-cols-1 lg:grid-cols-[1fr_2fr] items-center'
+              : 'grid-cols-1',
+            'grid gap-x-4 gap-y-4'
+          )}
+        >
+          {otherImages ? (
+            <Carousel responsive={responsive} autoPlay>
+              <Image
+                {...convertToNextImageProps(getImageProps(image))}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              {secondaryImages &&
+                secondaryImages.map((image, index) => (
+                  <Image
+                    key={`Image ${index + 2}`}
+                    {...convertToNextImageProps(getImageProps(image))}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                ))}
+            </Carousel>
+          ) : (
             <Image
               {...convertToNextImageProps(getImageProps(image))}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-            {secondaryImages &&
-              secondaryImages.map((image, index) => (
-                <Image
-                  key={`Image ${index + 2}`}
-                  {...convertToNextImageProps(getImageProps(image))}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              ))}
-          </Carousel>
-        ) : (
-          <Image
-            {...convertToNextImageProps(getImageProps(image))}
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        )}
-        {copy && (
-          <div
-            className="content-block-rtf max-w-3xl"
-            dangerouslySetInnerHTML={{ __html: copy }}
-          />
-        )}
-      </div>
+          )}
+          {copy && (
+            <div
+              className="content-block-rtf max-w-3xl"
+              dangerouslySetInnerHTML={{ __html: copy }}
+            />
+          )}
+        </div>
+      )}
       {link && (
         <Link className="btn-main border mr-auto" href={link}>
           {linkText ?? link}
