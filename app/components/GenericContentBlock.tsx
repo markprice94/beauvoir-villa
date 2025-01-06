@@ -64,83 +64,48 @@ export const GenericContentBlock = ({
   } = block;
 
   const secondaryImages = otherImages?.map((img) => img.src);
-
+  const sideBySide = blockType === 'sideBySide';
   return (
-    <div
-      id={pageAnchorId ?? title.toLowerCase().replace(' ', '-')}
-      className={classNames(
-        blockType === 'sideBySide' ? 'flex-row items-center' : 'flex-col',
-        first && 'pt-12 md:pt-20',
-        last && 'pb-12 md:pb-20',
-        'flex flex-wrap'
-      )}
-    >
-      {preHeader && <h4 className="w-full">{preHeader.toUpperCase()}</h4>}
-      {showTitle && <h2 className="w-full">{title}</h2>}
-
+    <div className="flex flex-col gap-y-4">
+      <h2>{title}</h2>
       <div
         className={classNames(
-          blockType === 'sideBySide' && 'w-1/2',
-          'max-w-[50vw] rounded-md md:rounded-lg'
+          sideBySide
+            ? 'grid-cols-1 lg:grid-cols-[1fr_2fr] items-center'
+            : 'grid-cols-1',
+          'grid gap-x-4 gap-y-4'
         )}
       >
-        {image && !otherImages && (
+        {otherImages ? (
+          <Carousel responsive={responsive} autoPlay>
+            <Image
+              {...convertToNextImageProps(getImageProps(image))}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            {secondaryImages &&
+              secondaryImages.map((image, index) => (
+                <Image
+                  key={`Image ${index + 2}`}
+                  {...convertToNextImageProps(getImageProps(image))}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              ))}
+          </Carousel>
+        ) : (
           <Image
             {...convertToNextImageProps(getImageProps(image))}
-            style={{ objectFit: 'contain' }}
-            className="rounded-md md:rounded-lg max-sm:max-w-full"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         )}
-
-        {otherImages && (
-          <Carousel
-            responsive={responsive}
-            arrows={false}
-            autoPlay
-            partialVisbile={false}
-            autoPlaySpeed={3000}
-            infinite
-            draggable={false}
-            swipeable={false}
-          >
-            <div key="main-image" className="relative">
-              <Image
-                {...convertToNextImageProps(getImageProps(image))}
-                style={{ objectFit: 'cover', aspectRatio: 16 / 9 }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="rounded-md md:rounded-lg"
-              />
-            </div>
-            {secondaryImages &&
-              secondaryImages.map((image: any, roomPicIndex: number) => {
-                if (!image) return null;
-                return (
-                  <div key={roomPicIndex} className="relative">
-                    <Image
-                      {...convertToNextImageProps(getImageProps(image))}
-                      style={{ objectFit: 'cover', aspectRatio: 16 / 9 }}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="rounded-md md:rounded-lg"
-                    />
-                  </div>
-                );
-              })}
-          </Carousel>
+        {copy && (
+          <div
+            className="content-block-rtf max-w-3xl"
+            dangerouslySetInnerHTML={{ __html: copy }}
+          />
         )}
       </div>
-
-      {copy && (
-        <div
-          className={classNames(
-            blockType === 'sideBySide' ? 'ml-8 w-5/12' : 'mt-8',
-            'content-block-rtf'
-          )}
-          dangerouslySetInnerHTML={{ __html: copy }}
-        />
-      )}
       {link && (
-        <Link className="mr-auto btn-main py-1 px-4 border mt-8" href={link}>
+        <Link className="btn-main border mr-auto" href={link}>
           {linkText ?? link}
         </Link>
       )}
